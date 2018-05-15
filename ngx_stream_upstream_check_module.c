@@ -2155,7 +2155,7 @@ ngx_stream_upstream_check_init_shm_zone(ngx_shm_zone_t *shm_zone, void *data)
 
     // alloc peers_shm
     size = sizeof(*peers_shm) +
-           (number ) * sizeof(ngx_upstream_check_peer_shm_t);//last item not use :)
+           (number ) * sizeof(ngx_stream_upstream_check_peer_shm_t);//last item not use :)
     peers_shm = ngx_slab_alloc(shpool, size);
 
     if (peers_shm == NULL) {

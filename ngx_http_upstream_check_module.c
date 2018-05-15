@@ -3820,7 +3820,7 @@ ngx_http_upstream_check_init_shm_zone(ngx_shm_zone_t *shm_zone, void *data)
     shpool = (ngx_slab_pool_t *) shm_zone->shm.addr;
     // alloc peers_shm
     size = sizeof(*peers_shm) +
-           (number ) * sizeof(ngx_upstream_check_peer_shm_t);//last item not use :)
+           (number ) * sizeof(ngx_http_upstream_check_peer_shm_t);//last item not use :)
     peers_shm = ngx_slab_alloc(shpool, size);
 
     if (peers_shm == NULL) {
