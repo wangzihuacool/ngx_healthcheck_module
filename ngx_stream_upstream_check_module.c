@@ -748,14 +748,18 @@ ngx_stream_upstream_check_peek_one_byte(ngx_connection_t *c)
     n = recv(c->fd, buf, 1, MSG_PEEK);
     err = ngx_socket_errno;
 
-    ngx_log_error(NGX_LOG_INFO, c->log, err,
+    /* ngx_log_error(NGX_LOG_INFO, c->log, err,
                    "[ngx-healthcheck][stream] when recv one byte,"
                    " recv(): %i, fd: %d",
-                   n, c->fd);
+                   n, c->fd); */
 
     if (n == 1 || (n == -1 && err == NGX_EAGAIN)) {
         return NGX_OK;
     } else {
+	ngx_log_error(NGX_LOG_INFO, c->log, err,
+            "[ngx-healthcheck][stream] when recv one byte,"
+            " recv(): %i, fd: %d",
+            n, c->fd);
         return NGX_ERROR;
     }
 }
