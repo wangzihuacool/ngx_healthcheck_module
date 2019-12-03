@@ -649,10 +649,10 @@ ngx_stream_upstream_check_begin_handler(ngx_event_t *event)
     ngx_shmtx_unlock(&peer->shm->mutex);
 
     if (peer->shm->owner == ngx_pid) {
-        ngx_log_error(NGX_LOG_INFO, event->log, 0,
+        /* ngx_log_error(NGX_LOG_INFO, event->log, 0,
                    "[ngx-healthcheck][stream][check-event][when begin check]"
                    "restart a check for peer:(%V)", 
-                   &peer->check_peer_addr->name);
+                   &peer->check_peer_addr->name); */
         ngx_stream_upstream_check_connect_handler(event);
     }
 }
